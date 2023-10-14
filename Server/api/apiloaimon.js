@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     await mongoose.connect(uri);
     try {
-        const newLoaiMon= new LoaiMon(req.body);
+        const newLoaiMon= new LoaiMon(req.query);
         const loaimon = await newLoaiMon.save();
         res.status(201).json(loaimon);
       } catch (err) {
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     await mongoose.connect(uri);
     const LoaiMonId = req.params.id;
-    const updatedLoaiMon = req.body;
+    const updatedLoaiMon = req.query;
     try {
       const loaimon = await LoaiMon.findByIdAndUpdate(LoaiMonId, updatedLoaiMon, { new: true });
       res.json(loaimon);

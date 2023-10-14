@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     await mongoose.connect(uri);
     try {
-        const newMonAn= new MonAn(req.body);
+        const newMonAn= new MonAn(req.query);
         const monAn = await newMonAn.save();
         res.status(201).json(monAn);
       } catch (err) {
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     await mongoose.connect(uri);
     const MonAnId = req.params.id;
-    const updatedMonAn = req.body;
+    const updatedMonAn = req.query;
     try {
       const monan = await MonAn.findByIdAndUpdate(MonAnId, updatedMonAn, { new: true });
       res.json(monan);

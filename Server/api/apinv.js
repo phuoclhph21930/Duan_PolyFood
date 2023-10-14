@@ -4,6 +4,7 @@ var app = express();
 const NhanVien = require('../Model/modelNhanvien');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
