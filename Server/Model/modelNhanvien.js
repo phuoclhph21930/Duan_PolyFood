@@ -25,6 +25,10 @@ image:{
     type: String,
     require: true
 },
+diachi:{
+    type: String,
+    require: true
+},
 role:{
     type: String,
     require: true
